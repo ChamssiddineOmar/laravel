@@ -6,17 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void {
-        Schema::create('etudiants', function (Blueprint $table) {
+        Schema::create('cours_etudiant', function (Blueprint $table) {
             $table->id();
-            $table->string('prenom');
-            $table->string('nom');
-            $table->string('email')->unique();
-            $table->date('date_naissance');
+            $table->foreignId('etudiant_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cours_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
 
     public function down(): void {
-        Schema::dropIfExists('etudiants');
+        Schema::dropIfExists('cours_etudiant');
     }
 };

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Etudiant extends Model
 {
-    protected $fillable = ['id_Etd','Nom','Prenom','Datenaiss','Email',
-     'id_Etd',
-    ];
+    protected $fillable = ['prenom', 'nom', 'email', 'date_naissance'];
+
+    public function cours() {
+        return $this->belongsToMany(Cours::class, 'cours_etudiant');
+    }
 }

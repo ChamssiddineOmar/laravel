@@ -4,15 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\CoursController;
 
-// Redirige automatiquement l'accueil vers la liste des étudiants
+// 1. MODIFICATION ICI : On ne redirige plus, on affiche la vue welcome_custom
 Route::get('/', function () {
-    return redirect()->route('etudiants.index');
+    return view('welcome_custom'); 
 });
 
-// Tes autres pages statiques (si tu en as besoin)
+// 2. Tes autres pages (garde-les si tu les utilises)
 Route::get('login', function () { return view('login'); });
 Route::get('tables', function () { return view('tables'); });
 
-// LES ROUTES RESSOURCES (Le cœur du projet)
+// 3. LES ROUTES RESSOURCES (Ne rien changer ici)
 Route::resource('etudiants', EtudiantController::class);
 Route::resource('cours', CoursController::class);

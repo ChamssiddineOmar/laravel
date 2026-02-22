@@ -14,8 +14,7 @@
             <table class="table table-hover mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th class="ps-4">Libellé</th>
-                        <th>Professeur</th>
+                        <th class="ps-4">Nom du Cours</th> <th>Professeur</th>
                         <th>Volume Horaire</th>
                         <th class="text-center">Actions</th>
                     </tr>
@@ -23,16 +22,23 @@
                 <tbody>
                     @foreach($cours as $cour)
                     <tr>
-                        <td class="ps-4">{{ $cour->libelle }}</td>
+                        <td class="ps-4 fw-bold text-primary">{{ $cour->nom }}</td>
+                        
                         <td>{{ $cour->professeur }}</td>
                         <td>{{ $cour->volume_horaire }} h</td>
                         <td class="text-center">
-                            <form action="{{ route('cours.destroy', $cour->id) }}" method="POST">
-                                @csrf @method('DELETE')
-                                <button class="btn btn-sm btn-outline-danger border-0" onclick="return confirm('Supprimer ?')">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
+                            <div class="btn-group">
+                                <a href="{{ route('cours.edit', $cour->id) }}" class="btn btn-sm btn-outline-primary border-0">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                
+                                <form action="{{ route('cours.destroy', $cour->id) }}" method="POST" class="d-inline">
+                                    @csrf @method('DELETE')
+                                    <button class="btn btn-sm btn-outline-danger border-0" onclick="return confirm('Supprimer ce cours ?')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @endforeach

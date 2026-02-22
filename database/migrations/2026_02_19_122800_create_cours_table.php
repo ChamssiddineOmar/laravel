@@ -5,12 +5,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up(): void {
+    public function up(): void
+    {
         Schema::create('cours', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle');
-            $table->string('professeur');
-            $table->integer('volume_horaire');
+            $table->string('nom'); 
+            $table->string('professeur'); // Ajoute cette ligne
+            $table->integer('volume_horaire'); // Ajoute cette ligne
             $table->timestamps();
         });
     }

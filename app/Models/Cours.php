@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Cours extends Model
 {
-    protected $fillable = ['libelle', 'professeur', 'volume_horaire'];
+    use HasFactory;
+
+    // On remplace 'libelle' par 'nom' pour correspondre à la base de données
+    protected $fillable = ['nom', 'professeur', 'volume_horaire'];
 
     public function etudiants() {
         return $this->belongsToMany(Etudiant::class, 'cours_etudiant');
